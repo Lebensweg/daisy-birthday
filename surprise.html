@@ -54,10 +54,21 @@
   <div class="navigation">
     <button onclick="window.location.href='letter.html'">Previous</button>
   </div>
-
+  
+<!-- One last song -->
+  <div class="music-controls">
+    <p>One last song, for good measure</p>
+    <button onclick="toggleOnelastsong()">Play Song 2</button>
+  </div>
+  
+  <!-- Second Song -->
+  <audio id="Last Song">
+    <source src="song2.mp3" type="audio/mpeg">
+  </audio>
+  
   <!-- Background Music -->
   <audio id="background-music" autoplay loop>
-    <source src="song.mp3" type="audio/mpeg">
+    <source src="song2.mp3" type="audio/mpeg">
   </audio>
     <script>
     function startMusic() {
