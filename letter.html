@@ -12,9 +12,14 @@
       color: #333;
       text-align: center;
       overflow-x: hidden;
-      background:  url('daisy.jpg') alt="daisy">no-repeat center center/cover;
+      background: url('flowers.jpg') no-repeat center center/cover;
       color: white;
       text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
     .letter {
       font-size: 1.2rem;
@@ -44,13 +49,41 @@
     button:hover {
       background: #b71c1c;
     }
+    .music-controls {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .music-controls p {
+      margin: 5px 0;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+    .stickman {
+      position: fixed;
+      bottom: -100px;
+      right: -100px;
+      width: 150px;
+      height: 150px;
+      background: url('stickman.png') no-repeat center center/contain;
+      animation: peek 3s ease-in-out infinite;
+    }
+    @keyframes peek {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
   </style>
 </head>
 <body>
   <div class="letter">
     <h2>Hey Daisy,</h2>
     <p>
-      It's another year past. You've not had it the easiest through the year. The highlight of it would probably be meeting me for the first time😎😂. On a more serious note, I have made all this just to appreciate you and say happy birthday in a more dramatic fashion. I wish you all the best that life has to offer. I wish you sense, lots of it. And also, the ability to see things with two eyes, 'cause your tunnel vision thing is quite annoying sometimes. You are a wonderful person, flaws inclusive and I have been saying that from day one because I mean it. Don't change, but pleeeeaaase change😂. Here's to more beautiful years ahead🥂. PS. Don't like people so quickly in this new year. I am not going to be emotional support again oo😂. Oh, and I love you. Should really say that more often but you'll just make it weird.
+      It's another year past and another addition to your age basket. You've not had it the easiest through the past year. The highlight of it would probably be meeting me for the first time😎😂. On a more serious note, I have made all this just to appreciate you and say happy birthday in a more dramatic fashion. I wish you all the best that life has to offer. I wish you sense, lots of it. And also, the ability to see things with two eyes, 'cause your tunnel vision thing is quite annoying sometimes. You are a wonderful person, flaws inclusive and I have been saying that from day one because I mean it. Don't change, but pleeeeaaase change😂. Here's to more beautiful years ahead🥂. PS. Don't like people so quickly in this new year. I am not going to be emotional support again oo😂. Oh, and I love you. Should really say that more often but you'll just make it weird.
     </p>
   </div>
 
@@ -59,14 +92,37 @@
     <button onclick="window.location.href='surprise.html'">Next</button>
   </div>
 
+  <!-- Stay for another song -->
+  <div class="music-controls">
+    <p>Stay for another song</p>
+    <button onclick="toggleSecondSong()">Play Song 2</button>
+  </div>
+
   <!-- Background Music -->
-    <audio id="background-music" autoplay loop>
+  <audio id="background-music" autoplay loop>
     <source src="song.mp3" type="audio/mpeg">
-  </audio> 
+  </audio>
+
+  <!-- Second Song -->
+  <audio id="second-song">
+    <source src="song1.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Stickman Animation -->
+  <div class="stickman"></div>
+
   <script>
-    function startMusic() {
-      const audio = document.getElementById('background-music');
-      audio.play();
+    const audio = document.getElementById('background-music');
+    const secondSong = document.getElementById('second-song');
+
+    function toggleSecondSong() {
+      if (secondSong.paused) {
+        secondSong.play();
+        document.querySelector('.music-controls button').textContent = 'Pause Song 2';
+      } else {
+        secondSong.pause();
+        document.querySelector('.music-controls button').textContent = 'Play Song 2';
+      }
     }
   </script>
 </body>
