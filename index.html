@@ -58,4 +58,26 @@
   <div class="music-controls">
     <button onclick="toggleMusic()">Play Music</button>
     <p>Take a while to listen to this</p>
-  </
+  </div>
+
+  <!-- Background Music -->
+  <audio id="background-music" loop>
+    <source src="song.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    const audio = document.getElementById('background-music');
+
+    function toggleMusic() {
+      if (audio.paused) {
+        audio.play();
+        document.querySelector('.music-controls button').textContent = 'Pause Music';
+      } else {
+        audio.pause();
+        document.querySelector('.music-controls button').textContent = 'Play Music';
+      }
+    }
+  </script>
+</body>
+</html>
